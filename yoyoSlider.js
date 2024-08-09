@@ -1,6 +1,11 @@
 function yoyoCarousel(selector, options) {
     const carousel = document.querySelector(selector);
-    const settings = Object.assign({ showDot: true, dotActiveColor: '#717171' }, options);
+    const settings = Object.assign({ 
+        showDot: true, 
+        dotActiveColor: '#717171',
+        autoSlide: true,
+        interval : 3000,
+     }, options);
 
     const style = document.createElement('style');
     style.textContent = `
@@ -68,7 +73,6 @@ function yoyoCarousel(selector, options) {
         return element;
     }
 
-    // Wrap images in necessary structure
     const images = Array.from(carousel.querySelectorAll('img'));
     const carouselImages = createElementWithClass('div', 'yoyoSlider-images');
     images.forEach(img => carouselImages.appendChild(img));
@@ -87,7 +91,6 @@ function yoyoCarousel(selector, options) {
         carousel.appendChild(dotsContainer);
     }
 
-    // Carousel functionality
     let currentIndex = 0;
 
     function showSlide(index) {
@@ -130,13 +133,13 @@ function yoyoCarousel(selector, options) {
         updateDots();
     }
 
-    // Initialize dots
     createDots();
 
-    // Attach event handlers
     prevButton.addEventListener('click', prevSlide);
     nextButton.addEventListener('click', nextSlide);
 
-    // Optional: Auto-slide
-    setInterval(nextSlide, 3000);
+    if(settings.autoSlide){
+        setInterval(nextSlide, `${settings.interval}`);
+    }
+    
 }
