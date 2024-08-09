@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yoyo Slider</title>
+</head>
+
+<body>
+
+    <div class="yoyoSlider">
+        <img src="https://via.placeholder.com/600x300?text=Image+1" alt="Image 1">
+        <img src="https://via.placeholder.com/600x300?text=Image+2" alt="Image 2">
+        <img src="https://via.placeholder.com/600x300?text=Image+3" alt="Image 3">
+    </div>
+
+    <script src="yoyoSlider.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            yoyoCarousel('.yoyoSlider', {
+                showDot: true,
+                dotActiveColor: 'red',
+            });
+        });
+    </script>
+
+</body>
+
+</html>
