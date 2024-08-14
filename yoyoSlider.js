@@ -1,11 +1,11 @@
 function yoyoCarousel(selector, options) {
     const carousel = document.querySelector(selector);
-    const settings = Object.assign({ 
-        showDot: true, 
+    const settings = Object.assign({
+        showDot: true,
         dotActiveColor: '#717171',
         autoSlide: true,
-        interval : 3000,
-     }, options);
+        interval: 3000,
+    }, options);
 
     const style = document.createElement('style');
     style.textContent = `
@@ -29,6 +29,7 @@ function yoyoCarousel(selector, options) {
 .yoyoSlider .next {
     position: absolute;
     top: 50%;
+    transform: translateY(-50%);
     width: auto;
     padding: 16px;
     margin-top: -22px;
@@ -80,9 +81,13 @@ function yoyoCarousel(selector, options) {
     carousel.appendChild(carouselImages);
 
     const prevButton = createElementWithClass('a', 'prev');
+    prevButton.addEventListener('click', prevSlide);
     prevButton.textContent = '❮';
+
     const nextButton = createElementWithClass('a', 'next');
+    nextButton.addEventListener('click', nextSlide);
     nextButton.textContent = '❯';
+
     carousel.appendChild(prevButton);
     carousel.appendChild(nextButton);
 
@@ -135,11 +140,11 @@ function yoyoCarousel(selector, options) {
 
     createDots();
 
-    prevButton.addEventListener('click', prevSlide);
-    nextButton.addEventListener('click', nextSlide);
 
-    if(settings.autoSlide){
+
+
+    if (settings.autoSlide) {
         setInterval(nextSlide, `${settings.interval}`);
     }
-    
+
 }
